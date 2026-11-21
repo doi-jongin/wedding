@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1">
+<meta name="theme-color" content="#ffffff">
+
+<!-- ▼ 카카오톡/문자로 공유될 때 보이는 정보 -->
+<title>종인 도이 — 2027.04.18</title>
+<meta property="og:title" content="종인 · 도이 결혼합니다">
+<meta property="og:description" content="2027년 4월 18일 일요일 오후 2시 · 남산예술원">
+<meta property="og:image" content="media/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=Gowun+Batang&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+<style>
+  :root{
+    --bg:#FFFFFF;          /* 배경: 흰색 */
+    --ink:#262626;         /* 글자 */
+    --sub:#737373;         /* 회색 보조 글자 */
+    --line:#DBDBDB;        /* 구분선 */
+    --hair:#EFEFEF;        /* 옅은 구분선 */
+    --sky:#6BBAF0;         /* 포인트 하늘색 (하트, 점) */
+    --sky-deep:#2B8AD0;    /* 하늘색 글자 (버튼) */
+    --sky-soft:#EAF5FD;    /* 하늘색 버튼 바탕 */
+    --ring:linear-gradient(45deg,#BDE7FB 0%,#7CC4F2 50%,#6AA6EC 100%);  /* 스토리 링 */
+    --ph:#EEF3F7;          /* 사진 자리 */
+    --w:470px;
+    --top:48px;
+    --nav:50px;
+    --kr:Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR','Segoe UI',sans-serif;
+    --logo:'Gowun Batang','Noto Serif KR',serif;
+    --script:'Cormorant Garamond','Gowun Batang',serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{
+    background:#F4F6F8;color:var(--ink);
+    font-family:var(--kr);font-size:14px;line-height:18px;-webkit-font-smoothing:antialiased;
+  }
+  button{font:inherit;color:inherit}
+  #app{
+    max-width:var(--w);margin:0 auto;min-height:100dvh;background:var(--bg);
+    padding-bottom:calc(var(--nav) + env(safe-area-inset-bottom));
+  }
+
+  /* ---------- 상단 바 ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:40;background:var(--bg);
+    height:calc(var(--top) + env(safe-area-inset-top));padding:env(safe-area-inset-top) 16px 0;
+    display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--hair);
+  }
+  .logo{margin:0;font-family:var(--logo);font-weight:400;font-size:21px;line-height:1;letter-spacing:.03em}
+  .logo .amp{
+    font-family:var(--script);font-style:italic;font-weight:300;font-size:1.15em;
+    color:var(--sky);margin:0 .28em;letter-spacing:0;
+  }
+  .topdate{font-size:13px;color:var(--sub);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+
+  /* ---------- 스토리 ---------- */
+  .stories{
+    display:flex;gap:12px;overflow-x:auto;padding:12px 12px 10px;scrollbar-width:none;
+    border-bottom:1px solid var(--hair);
+  }
+  .stories::-webkit-scrollbar{display:none}
+  .story{flex:0 0 auto;width:74px;border:0;background:none;padding:0;cursor:pointer}
+  .story .ring{width:74px;height:74px;border-radius:50%;padding:2.5px;background:var(--ring);transition:transform .14s ease}
+  .story:active .ring{transform:scale(.95)}
+  .story.seen .ring{background:var(--line)}
+  .story .gap{width:100%;height:100%;border-radius:50%;background:var(--bg);padding:3px}
+  .story .thumb{
+    width:100%;height:100%;border-radius:50%;overflow:hidden;background:var(--ph);
+    display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:500;color:#9DB4C6;
+  }
+  .story .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .story .slabel{
+    display:block;margin-top:5px;font-size:12px;line-height:16px;text-align:center;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .story.seen .slabel{color:var(--sub)}
+
+  /* ---------- 게시글 ---------- */
+  .post{padding-bottom:18px;scroll-margin-top:calc(var(--top) + env(safe-area-inset-top))}
+  .phead{display:flex;align-items:center;gap:10px;padding:10px 6px 10px 12px}
+  .avatar{width:36px;height:36px;border-radius:50%;padding:2px;background:var(--ring);flex:0 0 auto}
+  .avatar .in{
+    width:100%;height:100%;border-radius:50%;border:2px solid var(--bg);overflow:hidden;
+    background:var(--sky-soft);display:flex;align-items:center;justify-content:center;
+  }
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+  .phead .who{font-weight:600}
+  .phead .ploc{font-size:12px;line-height:16px}
+  .phead .more{margin-left:auto;background:none;border:0;padding:8px;cursor:pointer;display:flex}
+
+  .carousel{position:relative;background:var(--ph)}
+  .track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .track::-webkit-scrollbar{display:none}
+  .slide{flex:0 0 100%;scroll-snap-align:center;aspect-ratio:4/5;overflow:hidden}
+  .slide img,.slide video{width:100%;height:100%;object-fit:cover;display:block}
+  .ph{
+    width:100%;height:100%;background:var(--ph);color:#8FA3B3;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;
+  }
+  .slide:nth-child(even) .ph{background:#E4EDF4}
+  .ph b{font-weight:600;font-size:14px}
+  .ph small{font-size:12px}
+  .pcount{
+    position:absolute;top:14px;right:14px;background:rgba(18,18,18,.7);color:#fff;
+    font-size:12px;line-height:1;padding:7px 10px;border-radius:13px;font-variant-numeric:tabular-nums;
+  }
+  .heartpop{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0}
+  .heartpop svg{filter:drop-shadow(0 2px 10px rgba(0,0,0,.25))}
+  .heartpop.go{animation:pop .85s ease}
+  @keyframes pop{0%{opacity:0;transform:scale(.5)}18%{opacity:1;transform:scale(1.08)}32%{transform:scale(1)}70%{opacity:1}100%{opacity:0}}
+
+  .acts{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:4px 6px 0}
+  .acts .l{display:flex;gap:2px}
+  .acts .r{display:flex;justify-content:flex-end}
+  .acts button{background:none;border:0;padding:8px;cursor:pointer;display:flex}
+  .acts button:active{opacity:.5}
+  .acts .like.on svg{fill:var(--sky);stroke:var(--sky)}
+  .acts .save.on svg{fill:var(--ink)}
+  .dots{display:flex;gap:4px}
+  .dots i{width:6px;height:6px;border-radius:50%;background:#C7C7C7;transition:background .2s}
+  .dots i.on{background:var(--sky)}
+  .likes{padding:0 14px;font-weight:600}
+  .pcap{margin:0;padding:4px 14px 0;line-height:21px;white-space:pre-line}
+  .pcap b{font-weight:600;margin-right:6px}
+  .ptime{padding:6px 14px 0;font-size:12px;line-height:16px;color:var(--sub)}
+
+  /* ---------- 오시는 길 ---------- */
+  .loc{border-top:1px solid var(--hair);scroll-margin-top:calc(var(--top) + env(safe-area-inset-top))}
+  .loc h2{margin:0;padding:20px 16px 12px;font-size:16px;line-height:20px;font-weight:700}
+  .mapwrap{margin:0 16px;border-radius:12px;overflow:hidden;background:var(--ph);border:1px solid var(--hair)}
+  .mapwrap iframe{width:100%;height:250px;border:0;display:block}
+  .mapwrap img{width:100%;display:block}
+  .venue{padding:14px 16px 0}
+  .venue b{display:block;font-size:15px;line-height:20px;font-weight:600}
+  .venue span{display:block;margin-top:2px;font-size:13px;color:var(--sub)}
+  .btnrow{display:flex;gap:8px;padding:12px 16px 0}
+  .btn{
+    flex:1;border:0;border-radius:8px;background:var(--sky-soft);color:var(--sky-deep);
+    font-size:13.5px;font-weight:600;line-height:18px;padding:8px 6px;cursor:pointer;
+  }
+  .btn:active{opacity:.6}
+  .info{margin:16px 16px 0;border-top:1px solid var(--hair)}
+  .info .row{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--hair);line-height:20px}
+  .info .k{flex:0 0 52px;color:var(--sub)}
+  .info .v{flex:1}
+
+  /* ---------- 맨 아래 ---------- */
+  .outro{padding:52px 16px 48px;text-align:center}
+  .outro .big{font-family:var(--script);font-style:italic;font-weight:300;font-size:30px;line-height:1.2;letter-spacing:.02em;color:#58AEE6}
+  .outro .dday{margin-top:10px;font-size:12px;color:var(--sub)}
+
+  /* ---------- 하단 버튼 ---------- */
+  .nav{
+    position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:var(--w);
+    height:calc(var(--nav) + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);
+    background:var(--bg);border-top:1px solid var(--line);display:flex;z-index:40;
+  }
+  .nav button{flex:1;background:none;border:0;padding:0 4px;color:var(--sub);cursor:pointer;font-size:12.5px}
+  .nav button.on{color:var(--ink);font-weight:700}
+
+  /* ---------- 스토리 전체화면 ---------- */
+  .viewer{position:fixed;inset:0;z-index:100;background:#000;display:none;flex-direction:column;touch-action:none}
+  .viewer.on{display:flex}
+  .vstage{position:relative;flex:1;max-width:var(--w);width:100%;margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .vstage img.m,.vstage video.m{width:100%;height:100%;object-fit:contain;display:block}
+  .vstage .ph{position:absolute;inset:0;background:#1F2429;color:#9AA7B2}
+  .vbars{position:absolute;top:calc(8px + env(safe-area-inset-top));left:8px;right:8px;display:flex;gap:3px;z-index:5}
+  .vbars .vbar{flex:1;height:2px;border-radius:2px;background:rgba(255,255,255,.4);overflow:hidden}
+  .vbars .vbar b{display:block;height:100%;width:0;background:#fff}
+  .vtop{
+    position:absolute;top:calc(20px + env(safe-area-inset-top));left:12px;right:8px;
+    display:flex;align-items:center;gap:8px;z-index:5;color:#fff;
+  }
+  .vtop .avatar{width:32px;height:32px;padding:0;background:none}
+  .vtop .avatar .in{border:0}
+  .vtop .t{font-weight:600;text-shadow:0 1px 4px rgba(0,0,0,.35)}
+  .vtop .s{font-size:13px;opacity:.8;font-variant-numeric:tabular-nums;text-shadow:0 1px 4px rgba(0,0,0,.35)}
+  .vtop .sp{margin-left:auto;display:flex}
+  .vtop button{background:none;border:0;color:#fff;padding:8px;cursor:pointer;display:flex;filter:drop-shadow(0 1px 3px rgba(0,0,0,.35))}
+  .zone{position:absolute;top:0;bottom:0;z-index:4}
+  .zone.l{left:0;width:32%}
+  .zone.r{right:0;width:68%}
+  .vcap{
+    position:absolute;left:0;right:0;bottom:0;z-index:5;
+    padding:48px 20px calc(32px + env(safe-area-inset-bottom));
+    background:linear-gradient(transparent,rgba(0,0,0,.6));color:#fff;
+    font-size:15px;line-height:23px;white-space:pre-line;pointer-events:none;
+  }
+  .vcap:empty{display:none}
+
+  .toast{
+    position:fixed;left:50%;bottom:72px;transform:translateX(-50%) translateY(8px);
+    background:var(--ink);color:#fff;font-size:13px;
+    padding:10px 18px;border-radius:999px;opacity:0;transition:.22s;z-index:200;pointer-events:none;
+  }
+  .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+  button:focus-visible{outline:2px solid var(--sky-deep);outline-offset:2px}
+  @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+
+<div id="app">
+  <header class="topbar">
+    <h1 class="logo" id="logo"></h1>
+    <span class="topdate" id="topDate"></span>
+  </header>
+
+  <div class="stories" id="stories"></div>
+
+  <main id="feed"></main>
+
+  <section class="loc" id="sec-map">
+    <h2>오시는 길</h2>
+    <div class="mapwrap" id="mapwrap"></div>
+    <div class="venue" id="venueBox"></div>
+    <div class="btnrow" id="mapLinks"></div>
+    <div class="info" id="mapInfo"></div>
+    <div class="btnrow" id="telLinks"></div>
+  </section>
+
+  <footer class="outro">
+    <div class="big" id="outroBig"></div>
+    <div class="dday" id="outroDday"></div>
+  </footer>
+</div>
+
+<nav class="nav" id="nav">
+  <button data-go="top">스토리</button>
+  <button data-go="post-p1">게시글 1</button>
+  <button data-go="post-p2">게시글 2</button>
+  <button data-go="sec-map">오시는 길</button>
+</nav>
+
+<div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="스토리">
+  <div class="vstage" id="vstage">
+    <div class="vbars" id="vbars"></div>
+    <div class="vtop">
+      <div class="avatar"><div class="in" id="vAv"></div></div>
+      <div class="t" id="vTitle"></div><div class="s" id="vSub"></div>
+      <div class="sp">
+        <button id="vMute" aria-label="소리"></button>
+        <button id="vClose" aria-label="닫기"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+      </div>
+    </div>
+    <div class="zone l" id="zL"></div>
+    <div class="zone r" id="zR"></div>
+    <div class="vcap" id="vCap"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ══════════════════════════════════════════════════════════════════════
+   ▼▼▼ 이 CONFIG 안쪽만 고치면 됩니다 ▼▼▼
+   사진/영상은 src:'' 안에 파일 경로를 넣으세요.  예) src:'media/01.jpg'
+   비워두면 자리표시용 화면이 나옵니다.
+   ══════════════════════════════════════════════════════════════════════ */
+const CONFIG = {
+
+  /* ── 1. 제목 · 날짜 ───────────────────────────── */
+  groom:'종인',
+  bride:'도이',
+  dateLine:'2027. 04. 18',                  // 맨 위 오른쪽 날짜
+  weddingAt:'2027-04-18T14:00:00+09:00',    // 실제 예식 일시 (남은 날짜 자동 계산)
+  author:'종인 · 도이',                       // 게시글에 표시될 이름 (인스타 아이디 자리)
+  avatar:'',                                // 프로필 사진. 예) 'media/profile.jpg' (비우면 하늘색 하트)
+  outro:'see you there',                    // 맨 아래 문구
+
+  /* ── 2. 스토리 (위쪽 동그라미) ─────────────────── */
+  stories:[
+    { key:'first', label:'처음', items:[
+      {type:'image', src:'pic/01.jpg', caption:'test,\n중입니다.'},
+      {type:'image', src:'', caption:'그땐 몰랐죠. 9년 뒤에 이럴 줄은.'}
+    ]},
+    { key:'trip', label:'여행', items:[
+      {type:'video', src:'', caption:'교토, 비 오던 날'},
+      {type:'image', src:'', caption:'제주 3박 4일'}
+    ]},
+    { key:'propose', label:'프러포즈', items:[
+      {type:'video', src:'', caption:'“결혼하자”\n손이 떨려 반지를 두 번 떨어뜨림'}
+    ]},
+    { key:'studio', label:'스튜디오', items:[
+      {type:'image', src:'', caption:'웨딩 촬영 비하인드'},
+      {type:'video', src:'', caption:'감독님이 웃으라고 30번 말함'}
+    ]}
+  ],
+
+  /* ── 3. 게시글 (좌우로 넘기는 사진) ─────────────── */
+  posts:[
+    {
+      id:'p1',
+      loc:'남산예술원',                         // 이름 아래 작은 글씨 (위치 자리)
+      likes:417,                              // 좋아요 숫자
+      media:[{type:'image',src:'pic/02.jpg'},{type:'image',src:''},{type:'image',src:''}],
+      caption:'서로가 익숙해질 만큼의 시간을 지나, 이제 같은 이름으로 살아가려 합니다.\n오셔서 축복해 주시면 더없이 감사하겠습니다.',
+      time:'2027년 4월 17일 토요일 오후 1시'      // 맨 아래 회색 글씨 (날짜 자리)
+    },
+    {
+      id:'p2',
+      loc:'웨딩 촬영',
+      likes:214,
+      media:[{type:'image',src:'pic/03.jpg'},{type:'video',src:''},{type:'image',src:''}],
+      caption:'볕 좋은 날 찍었습니다.\n웃다가 눈 감은 컷이 절반이었어요.',
+      time:'2026년 가을'
+    }
+  ],
+
+  /* ── 4. 오시는 길 ────────────────────────────── */
+  venue:'남산예술원',
+  address:'서울 용산구 소월로 375',
+  mapLat:37.5446138,
+  mapLng:127.0005036,
+  mapImage:'',                    // 지도 대신 약도 이미지를 쓰려면 'media/map.jpg'
+  mapLinks:[
+    {label:'네이버 지도', url:'https://map.naver.com/p/search/남산예술원'},
+    {label:'카카오맵',   url:'https://map.kakao.com/?q=남산예술원'},
+    {label:'주소 복사',  act:'copyAddr'}
+  ],
+  info:[
+    ['일시','2027년 4월 17일 토요일 오후 1시'],
+    ['지하철','4호선 회현역 또는 명동역에서 택시 10분'],   // ← 예시 문구. 예식장 안내대로 바꿔주세요
+    ['주차','예식장 주차장 이용 · 2시간 무료']            // ← 예시 문구
+  ],
+  phones:[
+    {label:'신랑에게 전화', tel:'010-0000-0000'},
+    {label:'신부에게 전화', tel:'010-0000-0000'}
+  ]
+};
+
+/* ══════════════ 이 아래는 건드리지 않아도 됩니다 ══════════════ */
+const $ = s=>document.querySelector(s);
+const ICON = {
+  heart:'<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8l8.8 8.8 8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/>',
+  talk:'<path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 20.5l1.5-4.6A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/>',
+  send:'<path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/>',
+  save:'<path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/>'
+};
+const svg=(d,size=24)=>`<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+
+function avatarHTML(){
+  return CONFIG.avatar
+    ? `<img src="${CONFIG.avatar}" alt="">`
+    : `<svg width="15" height="15" viewBox="0 0 24 24" fill="#6BBAF0">${ICON.heart}</svg>`;
+}
+function placeholderHTML(type,i){
+  const word = type==='video' ? '영상' : '사진';
+  const num  = (type!=='video' && i!=null) ? ' '+(i+1) : '';
+  return `<div class="ph"><b>${word}${num}</b><small>${word} 경로를 넣어주세요</small></div>`;
+}
+function mediaHTML(item,i){
+  if(!item.src) return placeholderHTML(item.type,i);
+  if(item.type==='video') return `<video src="${item.src}" muted playsinline loop autoplay preload="metadata"></video>`;
+  return `<img src="${item.src}" alt="" loading="lazy">`;
+}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('on'),1600);}
+function copy(text,msg){
+  const ok=()=>toast(msg||'복사했습니다');
+  if(navigator.clipboard?.writeText) navigator.clipboard.writeText(text).then(ok).catch(fb); else fb();
+  function fb(){
+    const ta=document.createElement('textarea');ta.value=text;ta.style.cssText='position:fixed;opacity:0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');ok();}catch(e){toast('복사하지 못했습니다');}
+    ta.remove();
+  }
+}
+async function sharePage(){
+  const data={title:document.title,text:`${CONFIG.groom} · ${CONFIG.bride} — ${CONFIG.dateLine}`,url:location.href};
+  if(navigator.share){ try{await navigator.share(data);}catch(e){} }
+  else copy(location.href,'링크를 복사했습니다');
+}
+
+/* 상단 바 · 맨 아래 */
+$('#logo').innerHTML=`${CONFIG.groom}<span class="amp">&amp;</span>${CONFIG.bride}`;
+$('#topDate').textContent=CONFIG.dateLine||'';
+$('#outroBig').textContent=CONFIG.outro||'';
+(function(){
+  const t=new Date(CONFIG.weddingAt), n=new Date();
+  const day=d=>new Date(d.getFullYear(),d.getMonth(),d.getDate()).getTime();
+  const d=Math.round((day(t)-day(n))/86400000);
+  $('#outroDday').textContent = d>0 ? `결혼식까지 ${d}일` : (d===0 ? '오늘 결혼합니다' : '결혼했습니다');
+})();
+
+/* 스토리 동그라미 */
+const storiesEl=$('#stories');
+CONFIG.stories.forEach((s,i)=>{
+  const cover=s.items[0];
+  const thumb=(cover.src&&cover.type==='image') ? `<img src="${cover.src}" alt="">` : s.label[0];
+  const btn=document.createElement('button');
+  btn.type='button';btn.className='story';
+  btn.innerHTML=`<div class="ring"><div class="gap"><div class="thumb">${thumb}</div></div></div><span class="slabel">${s.label}</span>`;
+  btn.addEventListener('click',()=>openStory(i,0));
+  storiesEl.appendChild(btn);
+});
+
+/* 게시글 */
+const hasPhones=(CONFIG.phones||[]).length>0;
+const feed=$('#feed');
+CONFIG.posts.forEach(p=>{
+  const el=document.createElement('article');
+  el.className='post'; el.id='post-'+p.id;
+  const n=p.media.length, many=n>1, hasLikes=typeof p.likes==='number';
+  el.innerHTML=`
+    <div class="phead">
+      <div class="avatar"><div class="in">${avatarHTML()}</div></div>
+      <div>
+        <div class="who">${CONFIG.author}</div>
+        ${p.loc?`<div class="ploc">${p.loc}</div>`:''}
+      </div>
+      <button class="more" type="button" aria-label="링크 복사"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><circle cx="5.5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="18.5" cy="12" r="1.6"/></svg></button>
+    </div>
+    <div class="carousel">
+      <div class="track">${p.media.map((m,i)=>`<div class="slide">${mediaHTML(m,i)}</div>`).join('')}</div>
+      ${many?`<div class="pcount"><span class="cur">1</span>/${n}</div>`:''}
+      <div class="heartpop"><svg width="84" height="84" viewBox="0 0 24 24" fill="#fff">${ICON.heart}</svg></div>
+    </div>
+    <div class="acts">
+      <div class="l">
+        <button class="like" type="button" aria-label="좋아요">${svg(ICON.heart)}</button>
+        ${hasPhones?`<button class="talk" type="button" aria-label="연락하기">${svg(ICON.talk)}</button>`:''}
+        <button class="send" type="button" aria-label="공유">${svg(ICON.send)}</button>
+      </div>
+      <div class="dots">${many?p.media.map((_,i)=>`<i class="${i===0?'on':''}"></i>`).join(''):''}</div>
+      <div class="r"><button class="save" type="button" aria-label="저장">${svg(ICON.save)}</button></div>
+    </div>
+    ${hasLikes?`<div class="likes">좋아요 <span class="n">${p.likes.toLocaleString('ko-KR')}</span>개</div>`:''}
+    ${p.caption?`<p class="pcap"><b>${CONFIG.author}</b>${p.caption}</p>`:''}
+    ${p.time?`<div class="ptime">${p.time}</div>`:''}`;
+  feed.appendChild(el);
+
+  /* 좌우로 넘기기 */
+  const track=el.querySelector('.track'), dots=el.querySelectorAll('.dots i'), cur=el.querySelector('.cur');
+  if(many){
+    track.addEventListener('scroll',()=>{
+      const i=Math.round(track.scrollLeft/track.clientWidth);
+      dots.forEach((d,k)=>d.classList.toggle('on',k===i));
+      if(cur) cur.textContent=i+1;
+    },{passive:true});
+  }
+
+  /* 좋아요 */
+  const likeBtn=el.querySelector('.like'), nEl=el.querySelector('.likes .n');
+  const setLike=v=>{
+    likeBtn.classList.toggle('on',v);
+    if(nEl) nEl.textContent=(p.likes+(v?1:0)).toLocaleString('ko-KR');
+  };
+  likeBtn.addEventListener('click',()=>setLike(!likeBtn.classList.contains('on')));
+
+  /* 사진 두 번 탭하면 하트 */
+  const car=el.querySelector('.carousel'), pop=el.querySelector('.heartpop');
+  let lastTap=0, x0=0, y0=0;
+  car.addEventListener('pointerdown',e=>{x0=e.clientX;y0=e.clientY;});
+  car.addEventListener('pointerup',e=>{
+    if(Math.abs(e.clientX-x0)>10||Math.abs(e.clientY-y0)>10){ lastTap=0; return; }
+    const now=Date.now();
+    if(now-lastTap<320){ setLike(true); pop.classList.remove('go'); void pop.offsetWidth; pop.classList.add('go'); lastTap=0; }
+    else lastTap=now;
+  });
+
+  const saveBtn=el.querySelector('.save');
+  saveBtn.addEventListener('click',()=>saveBtn.classList.toggle('on'));
+  el.querySelector('.send').addEventListener('click',sharePage);
+  el.querySelector('.more').addEventListener('click',()=>copy(location.href,'링크를 복사했습니다'));
+  el.querySelector('.talk')?.addEventListener('click',()=>$('#telLinks').scrollIntoView({behavior:'smooth',block:'center'}));
+});
+
+/* 오시는 길 */
+$('#mapwrap').innerHTML = CONFIG.mapImage
+  ? `<img src="${CONFIG.mapImage}" alt="약도">`
+  : `<iframe src="https://www.google.com/maps?q=${CONFIG.mapLat},${CONFIG.mapLng}&hl=ko&z=16&output=embed" loading="lazy" title="지도"></iframe>`;
+$('#venueBox').innerHTML = `<b>${CONFIG.venue}</b><span>${CONFIG.address}</span>`;
+$('#mapLinks').innerHTML = (CONFIG.mapLinks||[]).map(b=>
+  `<button class="btn" type="button" data-act="${b.act||'link'}" data-url="${b.url||''}">${b.label}</button>`).join('');
+$('#mapInfo').innerHTML = (CONFIG.info||[]).map(([k,v])=>
+  `<div class="row"><span class="k">${k}</span><span class="v">${v}</span></div>`).join('');
+$('#telLinks').innerHTML = (CONFIG.phones||[]).map(p=>
+  `<button class="btn" type="button" data-act="tel" data-url="${p.tel}">${p.label}</button>`).join('');
+['#mapLinks','#mapInfo','#telLinks'].forEach(s=>{ if(!$(s).children.length) $(s).hidden=true; });
+
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',()=>{
+  const {act,url}=b.dataset;
+  if(act==='link') window.open(url,'_blank','noopener');
+  else if(act==='copyAddr') copy(CONFIG.address,'주소를 복사했습니다');
+  else if(act==='tel') location.href='tel:'+url.replace(/[^0-9+]/g,'');
+}));
+
+/* 하단 버튼: 누르면 이동, 보고 있는 구역은 진하게 */
+const navBtns=[...document.querySelectorAll('.nav button')];
+const navTargets=navBtns.map(b=>b.dataset.go==='top'?null:document.getElementById(b.dataset.go));
+navBtns.forEach((b,i)=>b.addEventListener('click',()=>{
+  if(!navTargets[i]) window.scrollTo({top:0,behavior:'smooth'});
+  else navTargets[i].scrollIntoView({behavior:'smooth',block:'start'});
+}));
+let spyQueued=false;
+function spy(){
+  spyQueued=false;
+  let idx=0;
+  if(window.scrollY>80){
+    const mid=window.innerHeight*0.45;
+    navTargets.forEach((t,i)=>{ if(t && t.getBoundingClientRect().top<=mid) idx=i; });
+  }
+  navBtns.forEach((b,i)=>b.classList.toggle('on',i===idx));
+}
+window.addEventListener('scroll',()=>{ if(!spyQueued){ spyQueued=true; requestAnimationFrame(spy); } },{passive:true});
+spy();
+
+/* ══════════════ 스토리 전체화면 ══════════════ */
+const IMG_MS=5000;
+const viewer=$('#viewer'), stage=$('#vstage'), barsEl=$('#vbars');
+let sIdx=0,iIdx=0,raf=null,elapsed=0,startTs=0,paused=false,videoEl=null,muted=true;
+$('#vAv').innerHTML=avatarHTML();
+renderMuteIcon();
+
+function openStory(s,i){ sIdx=s; iIdx=i||0; viewer.classList.add('on'); document.body.style.overflow='hidden'; renderItem(); }
+function closeStory(){ stopTimer(); clearMedia(); viewer.classList.remove('on'); document.body.style.overflow=''; }
+function clearMedia(){ stage.querySelectorAll('.m').forEach(n=>n.remove()); videoEl=null; }
+function renderBars(n){ barsEl.innerHTML=Array.from({length:n},(_,k)=>`<div class="vbar"><b style="width:${k<iIdx?'100%':'0'}"></b></div>`).join(''); }
+function setBar(p){ const b=barsEl.children[iIdx]?.firstElementChild; if(b) b.style.width=Math.min(100,Math.max(0,p*100))+'%'; }
+
+function renderItem(){
+  stopTimer(); clearMedia();
+  const story=CONFIG.stories[sIdx], item=story.items[iIdx];
+  storiesEl.children[sIdx]?.classList.add('seen');
+  $('#vTitle').textContent=story.label;
+  $('#vSub').textContent=story.items.length>1 ? `${iIdx+1}/${story.items.length}` : '';
+  $('#vCap').textContent=item.caption||'';
+  renderBars(story.items.length);
+
+  let node;
+  if(!item.src){
+    const wrap=document.createElement('div');
+    wrap.innerHTML=placeholderHTML(item.type,null);
+    node=wrap.firstElementChild; node.classList.add('m');
+  } else if(item.type==='video'){
+    node=document.createElement('video'); node.className='m'; node.src=item.src;
+    node.playsInline=true; node.muted=muted; node.autoplay=true; node.preload='auto';
+    videoEl=node; node.addEventListener('ended',next);
+  } else {
+    node=document.createElement('img'); node.className='m'; node.src=item.src; node.alt='';
+  }
+  stage.insertBefore(node,barsEl);
+  $('#vMute').style.display=videoEl?'flex':'none';
+  if(videoEl) videoEl.play().catch(()=>{});
+  startTimer();
+}
+function loop(ts){
+  if(paused) return;
+  if(videoEl){
+    const d=videoEl.duration;
+    if(d&&isFinite(d)) setBar(videoEl.currentTime/d);
+  } else {
+    if(!startTs) startTs=ts;
+    const e=elapsed+(ts-startTs);
+    setBar(e/IMG_MS);
+    if(e>=IMG_MS){ next(); return; }
+  }
+  raf=requestAnimationFrame(loop);
+}
+function startTimer(){ paused=false; elapsed=0; startTs=0; raf=requestAnimationFrame(loop); }
+function stopTimer(){ if(raf) cancelAnimationFrame(raf); raf=null; }
+function pause(){ if(paused)return; paused=true; if(!videoEl&&startTs) elapsed+=performance.now()-startTs; startTs=0; stopTimer(); videoEl?.pause(); }
+function resume(){ if(!paused)return; paused=false; videoEl?.play().catch(()=>{}); raf=requestAnimationFrame(loop); }
+function next(){
+  const story=CONFIG.stories[sIdx]; setBar(1);
+  if(iIdx<story.items.length-1){ iIdx++; renderItem(); }
+  else if(sIdx<CONFIG.stories.length-1){ sIdx++; iIdx=0; renderItem(); }
+  else closeStory();
+}
+function prev(){
+  if(iIdx>0){ iIdx--; renderItem(); }
+  else if(sIdx>0){ sIdx--; iIdx=CONFIG.stories[sIdx].items.length-1; renderItem(); }
+  else renderItem();
+}
+let holdT=null,held=false,downY=0,downX=0;
+function bindZone(el,fn){
+  el.addEventListener('pointerdown',e=>{ held=false; downY=e.clientY; downX=e.clientX; holdT=setTimeout(()=>{held=true;pause();},220); });
+  el.addEventListener('pointerup',e=>{
+    clearTimeout(holdT);
+    if(held){ held=false; resume(); return; }
+    const dy=e.clientY-downY, dx=e.clientX-downX;
+    if(dy>70&&Math.abs(dy)>Math.abs(dx)){ closeStory(); return; }
+    fn();
+  });
+  el.addEventListener('pointercancel',()=>{ clearTimeout(holdT); if(held){held=false;resume();} });
+}
+bindZone($('#zL'),prev); bindZone($('#zR'),next);
+$('#vClose').addEventListener('click',closeStory);
+$('#vMute').addEventListener('click',()=>{ muted=!muted; if(videoEl) videoEl.muted=muted; renderMuteIcon(); });
+function renderMuteIcon(){
+  $('#vMute').innerHTML = muted
+    ? svg('<path d="M11 5 6.5 9H3v6h3.5L11 19zM17 9.5l4 5M21 9.5l-4 5"/>',22)
+    : svg('<path d="M11 5 6.5 9H3v6h3.5L11 19zM16 9a4.5 4.5 0 0 1 0 6M18.8 6.5a8 8 0 0 1 0 11"/>',22);
+}
+document.addEventListener('keydown',e=>{
+  if(!viewer.classList.contains('on'))return;
+  if(e.key==='Escape')closeStory(); if(e.key==='ArrowRight')next(); if(e.key==='ArrowLeft')prev();
+});
+document.addEventListener('visibilitychange',()=>{
+  if(!viewer.classList.contains('on'))return;
+  document.hidden?pause():resume();
+});
+</script>
+</body>
+</html>
